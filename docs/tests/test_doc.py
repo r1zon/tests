@@ -6,7 +6,8 @@ import app
 class TestDocuments(unittest.TestCase):
     def setUp(self) -> None:
         with patch('app.input', return_value = 'q'):
-            app.secretary_program_start()
+            with patch('app.print'):
+                app.secretary_program_start()
 
     def test_is_doc_exists(self):
         doc_number = app.check_document_existance('11-2')
